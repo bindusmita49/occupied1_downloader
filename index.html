@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ocuupied — Cozy Time Tracking & Habit Audit</title>
+  <meta name="description" content="Ocuupied is a cozy, desktop personal time-tracking and habit-audit tool with a cute bear mascot. Track your hours, crush weekly goals, and audit your life peacefully.">
+  
+  <!-- Google Fonts: Fredoka (Rounded Display) & Poppins (Clean Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon (SVG data URI for cute sunglasses bear) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='52' r='38' fill='%23B895F4'/><circle cx='25' cy='24' r='14' fill='%23B895F4'/><circle cx='75' cy='24' r='14' fill='%23B895F4'/><circle cx='25' cy='24' r='7' fill='%23FFE7A3'/><circle cx='75' cy='24' r='7' fill='%23FFE7A3'/><rect x='20' y='42' width='60' height='16' rx='8' fill='%2324202A'/><circle cx='34' cy='50' r='9' fill='%2324202A'/><circle cx='66' cy='50' r='9' fill='%2324202A'/><path d='M30 48 Q35 44 40 48' stroke='%23FFF' stroke-width='2' fill='none'/><path d='M62 48 Q67 44 72 48' stroke='%23FFF' stroke-width='2' fill='none'/><ellipse cx='50' cy='66' rx='6' ry='4' fill='%2324202A'/><path d='M44 72 Q50 78 56 72' stroke='%2324202A' stroke-width='3' stroke-linecap='round' fill='none'/></svg>">
+</head>
+<body>
+
+  <!-- Floating Background Decorative Blobs (Parallax Layer) -->
+  <div class="blob-bg-container" aria-hidden="true">
+    <svg class="blob blob-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#C8DEDA" opacity="0.45" d="M43.3,-62.4C56.2,-55.8,66.8,-43.8,72.4,-29.7C78,-15.5,78.5,0.7,73.7,14.6C68.9,28.5,58.7,40,46.9,49.8C35.1,59.6,21.7,67.7,6.8,70.1C-8.1,72.5,-24.5,69.2,-38.3,60.9C-52.1,52.5,-63.3,39.1,-69.5,23.6C-75.7,8,-77,-9.7,-71.4,-24.7C-65.7,-39.7,-53.2,-52,-38.9,-58.2C-24.6,-64.3,-8.5,-64.3,6.3,-64.9C21.1,-65.4,30.4,-69,43.3,-62.4Z" transform="translate(100 100)" />
+    </svg>
+    <svg class="blob blob-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFE7A3" opacity="0.4" d="M38.5,-55.1C51.6,-48.2,65.2,-39.7,71.2,-27.1C77.2,-14.5,75.7,2.2,70.5,17.4C65.3,32.6,56.5,46.3,44.1,54.7C31.7,63.1,15.9,66.3,0.1,66.2C-15.6,66,-31.2,62.6,-44.2,54.3C-57.2,46,-67.6,32.8,-71.4,17.7C-75.1,2.6,-72.1,-14.4,-64.3,-28.3C-56.5,-42.2,-43.9,-53.1,-30.2,-59.7C-16.5,-66.2,-1.7,-68.5,12.5,-67.2C26.7,-65.9,25.4,-62,38.5,-55.1Z" transform="translate(100 100)" />
+    </svg>
+    <svg class="blob blob-3" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F3E2F0" opacity="0.6" d="M48.8,-68.9C61.4,-60.1,68.7,-43.6,73.1,-26.8C77.4,-10,78.8,7.1,73.7,22.1C68.6,37.1,57,50,43.1,58.7C29.2,67.4,14.6,71.9,-1.2,73.6C-17,75.2,-34,74,-46.8,65.1C-59.5,56.2,-68,39.6,-72.4,22.3C-76.8,5,-77.2,-13,-70.7,-27.6C-64.2,-42.1,-50.8,-53.2,-36.5,-61.5C-22.3,-69.8,-7.2,-75.3,8.7,-74.3C24.6,-73.2,36.2,-77.7,48.8,-68.9Z" transform="translate(100 100)" />
+    </svg>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo" aria-label="Ocuupied Home">
+        <!-- Bear Mascot Mini Logo -->
+        <span class="logo-icon-wrap">
+          <svg class="bear-mini-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="54" r="36" fill="#B895F4"/>
+            <circle cx="24" cy="26" r="14" fill="#B895F4"/>
+            <circle cx="76" cy="26" r="14" fill="#B895F4"/>
+            <circle cx="24" cy="26" r="7" fill="#FFE7A3"/>
+            <circle cx="76" cy="26" r="7" fill="#FFE7A3"/>
+            <ellipse cx="50" cy="67" rx="14" ry="10" fill="#F3E2F0"/>
+            <ellipse cx="50" cy="65" rx="5" ry="3.5" fill="#24202A"/>
+            <!-- Sunglasses -->
+            <path d="M16 46 C 24 38, 42 38, 48 46 L 52 46 C 58 38, 76 38, 84 46 C 84 57, 56 60, 49 52 C 44 60, 16 57, 16 46 Z" fill="#24202A"/>
+            <rect x="22" y="44" width="22" height="11" rx="4" fill="#24202A"/>
+            <rect x="56" y="44" width="22" height="11" rx="4" fill="#24202A"/>
+            <line x1="26" y1="46" x2="34" y2="46" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
+            <line x1="60" y1="46" x2="68" y2="46" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
+            <!-- Cute Smile -->
+            <path d="M46 72 Q50 76 54 72" stroke="#24202A" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">Ocuupied</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#preview" class="nav-link">Preview</a>
+        <a href="#download" class="nav-link nav-btn-cta">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        
+        <!-- Hero Text Column -->
+        <div class="hero-text-content scroll-reveal">
+          <div class="cozy-pill-tag">
+            <span class="pill-sparkle">✨</span>
+            <span>Desktop App • Cozy & 100% Offline</span>
+          </div>
+
+          <h1 class="hero-title">
+            Audit your days with calm, <span class="highlight-underline">peaceful clarity.</span>
+          </h1>
+
+          <p class="hero-tagline">
+            A friendly personal time-tracking and habit-audit tool that helps you understand where your precious life hours actually go — without stress or guilt.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#download" class="btn btn-primary btn-bounce">
+              <span>Download for Windows</span>
+              <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </a>
+            <a href="#features" class="btn btn-secondary">
+              <span>Explore Features</span>
+            </a>
+          </div>
+
+          <div class="hero-meta-row">
+            <div class="meta-item">
+              <span class="meta-dot"></span>
+              <span>Free v1.0 Release</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-dot dot-green"></span>
+              <span>No sign-up required</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-dot dot-mint"></span>
+              <span>Your data stays local</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Mascot & Visual Column -->
+        <div class="hero-visual-wrapper scroll-reveal">
+          <div class="mascot-card-backdrop">
+            <!-- Animated floating decorative elements -->
+            <div class="sticker-badge sticker-clock" aria-hidden="true">
+              <span class="sticker-emoji">⏱️</span>
+              <span class="sticker-label">25m Focus</span>
+            </div>
+
+            <div class="sticker-badge sticker-goal" aria-hidden="true">
+              <span class="sticker-emoji">🌱</span>
+              <span class="sticker-label">Habit Streak 14d</span>
+            </div>
+
+            <div class="sticker-badge sticker-audit" aria-hidden="true">
+              <span class="sticker-emoji">📊</span>
+              <span class="sticker-label">92% Life Balance</span>
+            </div>
+
+            <!-- Main Bear Hero Mascot Illustration (SVG) -->
+            <div class="hero-bear-illustration" role="img" aria-label="Cute bear wearing sunglasses giving a friendly wave">
+              <svg class="mascot-full-svg" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Gentle Glow Base -->
+                <circle cx="170" cy="180" r="140" fill="#F3E2F0" opacity="0.9"/>
+                
+                <!-- Bear Body -->
+                <ellipse cx="170" cy="285" rx="92" ry="70" fill="#B895F4"/>
+                <ellipse cx="170" cy="275" rx="55" ry="40" fill="#F3E2F0"/>
+                
+                <!-- Cozy Scarf / Collar -->
+                <path d="M125 220 Q170 235 215 220 C220 232 210 242 195 244 L195 268 L170 260 L145 268 L145 244 C130 242 120 232 125 220 Z" fill="#FFE7A3"/>
+                <circle cx="170" cy="242" r="6" fill="#F23BBE"/>
+
+                <!-- Bear Left Hand (Waving) -->
+                <g class="waving-paw">
+                  <path d="M85 245 C65 235 45 195 55 175 C62 162 82 172 88 185 C95 200 98 225 96 240 Z" fill="#B895F4"/>
+                  <!-- Paw Pads -->
+                  <ellipse cx="64" cy="182" rx="7" ry="6" fill="#FFE7A3"/>
+                  <circle cx="56" cy="172" r="2.5" fill="#FFE7A3"/>
+                  <circle cx="64" cy="168" r="2.5" fill="#FFE7A3"/>
+                  <circle cx="73" cy="171" r="2.5" fill="#FFE7A3"/>
+                </g>
+
+                <!-- Bear Right Hand (Resting) -->
+                <path d="M255 245 C275 235 285 210 280 200 C272 190 255 205 248 218 C242 230 242 242 245 250 Z" fill="#B895F4"/>
+
+                <!-- Bear Ears -->
+                <!-- Left Ear -->
+                <circle cx="108" cy="100" r="32" fill="#B895F4"/>
+                <circle cx="108" cy="100" r="18" fill="#FFE7A3"/>
+                <!-- Right Ear -->
+                <circle cx="232" cy="100" r="32" fill="#B895F4"/>
+                <circle cx="232" cy="100" r="18" fill="#FFE7A3"/>
+
+                <!-- Bear Head -->
+                <circle cx="170" cy="155" r="78" fill="#B895F4"/>
+                
+                <!-- Cute Cheeks -->
+                <ellipse cx="118" cy="180" rx="12" ry="8" fill="#F23BBE" opacity="0.35"/>
+                <ellipse cx="222" cy="180" rx="12" ry="8" fill="#F23BBE" opacity="0.35"/>
+
+                <!-- Snout Area -->
+                <ellipse cx="170" cy="178" rx="28" ry="20" fill="#F3E2F0"/>
+                <!-- Nose -->
+                <ellipse cx="170" cy="172" rx="9" ry="6.5" fill="#24202A"/>
+                <!-- Mouth -->
+                <path d="M162 184 Q170 192 178 184" stroke="#24202A" stroke-width="3.5" stroke-linecap="round"/>
+                
+                <!-- Iconic Sunglasses -->
+                <!-- Bridge -->
+                <rect x="156" y="137" width="28" height="8" rx="4" fill="#24202A"/>
+                <!-- Left Lens Frame -->
+                <rect x="106" y="125" width="52" height="34" rx="14" fill="#24202A"/>
+                <path d="M112 133 L144 133 Q150 133 150 142 L144 150 Q138 153 124 153 L116 150 Q110 145 112 133 Z" fill="#3D3547"/>
+                <!-- Glare lines on Left Lens -->
+                <line x1="118" y1="133" x2="136" y2="133" stroke="#FFE7A3" stroke-width="3" stroke-linecap="round"/>
+                <line x1="116" y1="139" x2="124" y2="139" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
+
+                <!-- Right Lens Frame -->
+                <rect x="182" y="125" width="52" height="34" rx="14" fill="#24202A"/>
+                <path d="M188 133 L220 133 Q226 133 226 142 L220 150 Q214 153 200 153 L192 150 Q186 145 188 133 Z" fill="#3D3547"/>
+                <!-- Glare lines on Right Lens -->
+                <line x1="194" y1="133" x2="212" y2="133" stroke="#FFE7A3" stroke-width="3" stroke-linecap="round"/>
+                <line x1="192" y1="139" x2="200" y2="139" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
+
+                <!-- Sunglasses Temple Arms -->
+                <path d="M106 138 C96 135 90 140 88 144" stroke="#24202A" stroke-width="5" stroke-linecap="round"/>
+                <path d="M234 138 C244 135 250 140 252 144" stroke="#24202A" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            
+            <!-- Small speech bubble from bear -->
+            <div class="mascot-speech-bubble" aria-hidden="true">
+              <span>"Let's audit today, friend!" ☕</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ORGANIC SVG SECTION DIVIDER 1 -->
+    <div class="wavy-divider wave-1" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="#F3E2F0">
+        <path d="M0,48L48,58.7C96,69,192,91,288,90.7C384,91,480,69,576,64C672,59,768,69,864,74.7C960,80,1056,80,1152,69.3C1248,59,1344,37,1392,26.7L1440,16L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+      </svg>
+    </div>
+
+    <!-- SECTION 2: FEATURES -->
+    <section class="features-section" id="features">
+      <div class="container">
+        
+        <!-- Section Header with Peeking Bear Mascot -->
+        <div class="section-header scroll-reveal">
+          <div class="header-mascot-wrapper">
+            <!-- Small Peeking Bear SVG -->
+            <svg class="peeking-bear-svg" viewBox="0 0 80 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Ears -->
+              <circle cx="22" cy="18" r="10" fill="#B895F4"/>
+              <circle cx="22" cy="18" r="5" fill="#FFE7A3"/>
+              <circle cx="58" cy="18" r="10" fill="#B895F4"/>
+              <circle cx="58" cy="18" r="5" fill="#FFE7A3"/>
+              <!-- Head top -->
+              <path d="M12 45 C12 25, 68 25, 68 45" fill="#B895F4"/>
+              <!-- Sunglasses -->
+              <rect x="20" y="26" width="18" height="11" rx="4" fill="#24202A"/>
+              <rect x="42" y="26" width="18" height="11" rx="4" fill="#24202A"/>
+              <rect x="36" y="29" width="8" height="3" rx="1.5" fill="#24202A"/>
+              <line x1="24" y1="29" x2="30" y2="29" stroke="#FFE7A3" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="46" y1="29" x2="52" y2="29" stroke="#FFE7A3" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Cheeks -->
+              <circle cx="18" cy="40" r="4" fill="#F23BBE" opacity="0.3"/>
+              <circle cx="62" cy="40" r="4" fill="#F23BBE" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="cozy-pill-tag">
+            <span>✨ Thoughtfully Designed</span>
+          </div>
+          <h2 class="section-title">Everything you need for cozy productivity</h2>
+          <p class="section-subtitle">No overwhelming charts or complicated project setups. Just gentle, clear tools made to nurture your daily flow.</p>
+        </div>
+
+        <!-- 6 Feature Cards with Staggered Scroll-In & Playful Rotations -->
+        <div class="features-grid">
+          
+          <!-- Card 1: Activity Logging & Categories -->
+          <article class="feature-card tilt-left scroll-reveal" style="--stagger-delay: 0ms;">
+            <div class="feature-icon-bubble bubble-mint">
+              <span class="feature-icon" role="img" aria-label="Activity logging icon">📝</span>
+            </div>
+            <h3 class="feature-title">Activity Logging & Categories</h3>
+            <p class="feature-description">
+              Log activities in seconds with easy tags, smart autocomplete, and intuitive category groupings like Deep Work, Rest, and Creative Flow.
+            </p>
+            <div class="card-pill pill-mint">Effortless tracking</div>
+          </article>
+
+          <!-- Card 2: Weekly Goals with Progress Tracking -->
+          <article class="feature-card tilt-right scroll-reveal" style="--stagger-delay: 100ms;">
+            <div class="feature-icon-bubble bubble-yellow">
+              <span class="feature-icon" role="img" aria-label="Weekly goals icon">🎯</span>
+            </div>
+            <h3 class="feature-title">Weekly Goals & Progress</h3>
+            <p class="feature-description">
+              Set realistic hour targets for habits you care about and watch your gentle progress bars fill up throughout the week without pressure.
+            </p>
+            <div class="card-pill pill-yellow">Gentle milestones</div>
+          </article>
+
+          <!-- Card 3: Focus Timer -->
+          <article class="feature-card tilt-left-small scroll-reveal" style="--stagger-delay: 200ms;">
+            <div class="feature-icon-bubble bubble-purple">
+              <span class="feature-icon" role="img" aria-label="Focus timer icon">⏳</span>
+            </div>
+            <h3 class="feature-title">Calm Focus Timer</h3>
+            <p class="feature-description">
+              Stay in the zone with built-in Pomodoro sessions, custom interval chimes, and a companion bear who focuses right alongside you.
+            </p>
+            <div class="card-pill pill-purple">Companion mode</div>
+          </article>
+
+          <!-- Card 4: Analytics & Monthly Audit Dashboard -->
+          <article class="feature-card tilt-right-small scroll-reveal" style="--stagger-delay: 300ms;">
+            <div class="feature-icon-bubble bubble-pink">
+              <span class="feature-icon" role="img" aria-label="Analytics audit icon">📊</span>
+            </div>
+            <h3 class="feature-title">Monthly Audit Dashboard</h3>
+            <p class="feature-description">
+              Step back once a month to review time distribution, energy balance, and habit trends through beautiful, soft pastel visual breakdowns.
+            </p>
+            <div class="card-pill pill-pink">Clear insights</div>
+          </article>
+
+          <!-- Card 5: Custom Categories with Custom Colors -->
+          <article class="feature-card tilt-left scroll-reveal" style="--stagger-delay: 400ms;">
+            <div class="feature-icon-bubble bubble-green">
+              <span class="feature-icon" role="img" aria-label="Custom palette icon">🎨</span>
+            </div>
+            <h3 class="feature-title">Custom Categories & Palettes</h3>
+            <p class="feature-description">
+              Personalize every tag with cozy color palettes, custom icons, and flexible rules that adapt to your exact lifestyle and work habits.
+            </p>
+            <div class="card-pill pill-green">Fully customizable</div>
+          </article>
+
+          <!-- Card 6: Daily Motivational Quotes -->
+          <article class="feature-card tilt-right scroll-reveal" style="--stagger-delay: 500ms;">
+            <div class="feature-icon-bubble bubble-yellow">
+              <span class="feature-icon" role="img" aria-label="Daily quotes icon">✨</span>
+            </div>
+            <h3 class="feature-title">Daily Mindful Reflections</h3>
+            <p class="feature-description">
+              Start each day with uplifting, mindful prompts and gentle affirmations handpicked to encourage steady, peaceful personal growth.
+            </p>
+            <div class="card-pill pill-yellow">Daily inspiration</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ORGANIC SVG SECTION DIVIDER 2 -->
+    <div class="wavy-divider wave-2" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="#E1D0E3">
+        <path d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+      </svg>
+    </div>
+
+    <!-- SECTION 3: SCREENSHOTS / APP PREVIEW -->
+    <section class="preview-section" id="preview">
+      <div class="container">
+        
+        <div class="section-header scroll-reveal">
+          <div class="cozy-pill-tag">
+            <span>👀 Sneak Peek</span>
+          </div>
+          <h2 class="section-title">Designed to feel like a cozy digital journal</h2>
+          <p class="section-subtitle">Take a look inside the clean, distraction-free desktop interface built for your daily peace of mind.</p>
+        </div>
+
+        <!-- Interactive Preview Mockup Window -->
+        <div class="preview-mockup-wrapper scroll-reveal">
+          <div class="window-frame">
+            <!-- Window Title Bar -->
+            <div class="window-header">
+              <div class="window-controls">
+                <span class="control-dot dot-close"></span>
+                <span class="control-dot dot-minimize"></span>
+                <span class="control-dot dot-expand"></span>
+              </div>
+              <div class="window-title-tab">
+                <svg class="tab-bear-icon" viewBox="0 0 100 100" width="16" height="16" fill="none">
+                  <circle cx="50" cy="50" r="35" fill="#B895F4"/>
+                  <rect x="25" y="40" width="50" height="16" rx="6" fill="#24202A"/>
+                </svg>
+                <span>Ocuupied — Today's Overview</span>
+              </div>
+              <div class="window-actions">
+                <span class="status-badge-live">● Offline & Local</span>
+              </div>
+            </div>
+
+            <!-- Window Inner App Body (High-Fidelity Preview Representation) -->
+            <div class="app-ui-preview">
+              
+              <!-- App Sidebar -->
+              <aside class="app-sidebar-preview">
+                <div class="app-profile-mini">
+                  <div class="app-avatar-circle">🐻</div>
+                  <div class="app-user-info">
+                    <span class="user-greeting">Morning, Alex</span>
+                    <span class="user-streak">🔥 14-day habit streak</span>
+                  </div>
+                </div>
+
+                <nav class="app-nav-list" aria-label="Mock App Navigation">
+                  <button class="app-nav-item active" type="button">
+                    <span class="app-nav-icon">📅</span> Today's Audit
+                  </button>
+                  <button class="app-nav-item" type="button">
+                    <span class="app-nav-icon">⏱️</span> Focus Timer
+                  </button>
+                  <button class="app-nav-item" type="button">
+                    <span class="app-nav-icon">🎯</span> Weekly Goals
+                  </button>
+                  <button class="app-nav-item" type="button">
+                    <span class="app-nav-icon">📊</span> Monthly Trends
+                  </button>
+                  <button class="app-nav-item" type="button">
+                    <span class="app-nav-icon">⚙️</span> Settings & Tags
+                  </button>
+                </nav>
+
+                <div class="sidebar-quote-card">
+                  <span class="quote-sparkle">💡</span>
+                  <p>"Slow and steady progress is still progress."</p>
+                </div>
+              </aside>
+
+              <!-- Main App Content Area -->
+              <div class="app-main-preview">
+                
+                <!-- Top Summary Cards -->
+                <div class="preview-stats-grid">
+                  <div class="stat-card stat-purple">
+                    <span class="stat-label">Logged Today</span>
+                    <span class="stat-value">6h 15m</span>
+                    <span class="stat-sub">+45m deep work</span>
+                  </div>
+                  <div class="stat-card stat-mint">
+                    <span class="stat-label">Focus Score</span>
+                    <span class="stat-value">94%</span>
+                    <span class="stat-sub">Calm & balanced</span>
+                  </div>
+                  <div class="stat-card stat-yellow">
+                    <span class="stat-label">Weekly Goals</span>
+                    <span class="stat-value">5 / 6</span>
+                    <span class="stat-sub">On track this week</span>
+                  </div>
+                </div>
+
+                <!-- Split Content: Timeline & Visual Breakdown -->
+                <div class="preview-content-split">
+                  
+                  <!-- Left: Timeline Activity Blocks -->
+                  <div class="preview-panel">
+                    <div class="panel-header">
+                      <h4>Today's Timeline</h4>
+                      <span class="badge-tag">August 24</span>
+                    </div>
+
+                    <div class="timeline-items">
+                      <div class="timeline-block block-deepwork">
+                        <div class="block-time">09:00 - 11:30</div>
+                        <div class="block-info">
+                          <strong>Deep Work & Creative Writing</strong>
+                          <span class="block-cat cat-purple">Focus (2h 30m)</span>
+                        </div>
+                      </div>
+
+                      <div class="timeline-block block-rest">
+                        <div class="block-time">11:30 - 12:15</div>
+                        <div class="block-info">
+                          <strong>Nature Walk & Tea Break</strong>
+                          <span class="block-cat cat-mint">Recharge (45m)</span>
+                        </div>
+                      </div>
+
+                      <div class="timeline-block block-study">
+                        <div class="block-time">13:00 - 15:15</div>
+                        <div class="block-info">
+                          <strong>Skill Building & Code Practice</strong>
+                          <span class="block-cat cat-yellow">Learning (2h 15m)</span>
+                        </div>
+                      </div>
+
+                      <div class="timeline-block block-habit">
+                        <div class="block-time">15:30 - 16:15</div>
+                        <div class="block-info">
+                          <strong>Mindful Journaling & Ocuupied</strong>
+                          <span class="block-cat cat-pink">Reflection (45m)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right: Time Distribution & Goal Rings -->
+                  <div class="preview-panel">
+                    <div class="panel-header">
+                      <h4>Life Balance Breakdown</h4>
+                      <span class="badge-tag">This Week</span>
+                    </div>
+
+                    <div class="distribution-bars">
+                      <div class="dist-row">
+                        <div class="dist-labels">
+                          <span>Deep Work</span>
+                          <span>18.5 hrs (Target 20h)</span>
+                        </div>
+                        <div class="progress-track">
+                          <div class="progress-fill fill-purple" style="width: 92%;"></div>
+                        </div>
+                      </div>
+
+                      <div class="dist-row">
+                        <div class="dist-labels">
+                          <span>Rest & Wellbeing</span>
+                          <span>12.0 hrs (Target 10h)</span>
+                        </div>
+                        <div class="progress-track">
+                          <div class="progress-fill fill-mint" style="width: 100%;"></div>
+                        </div>
+                      </div>
+
+                      <div class="dist-row">
+                        <div class="dist-labels">
+                          <span>Reading & Growth</span>
+                          <span>6.5 hrs (Target 7h)</span>
+                        </div>
+                        <div class="progress-track">
+                          <div class="progress-fill fill-yellow" style="width: 85%;"></div>
+                        </div>
+                      </div>
+
+                      <div class="dist-row">
+                        <div class="dist-labels">
+                          <span>Creative Hobby</span>
+                          <span>5.0 hrs (Target 5h)</span>
+                        </div>
+                        <div class="progress-track">
+                          <div class="progress-fill fill-pink" style="width: 100%;"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mascot-tip-box">
+                      <div class="tip-bear-face">🐻🕶️</div>
+                      <div class="tip-content">
+                        <strong>Bear Tip:</strong> "You've balanced deep work and rest wonderfully this week!"
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            
+            <!-- Window Footer Caption / Placeholder Note -->
+            <!-- Placeholder container styled for real screenshot swaps -->
+            <div class="screenshot-placeholder-note">
+              <span class="note-icon">📷</span>
+              <span>Previewing Live Desktop Interface • Real screenshots can be effortlessly placed here</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ORGANIC SVG SECTION DIVIDER 3 -->
+    <div class="wavy-divider wave-3" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="#F3E2F0">
+        <path d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,53.3C840,53,960,75,1080,80C1200,85,1320,75,1380,69.3L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+      </svg>
+    </div>
+
+    <!-- SECTION 4: DOWNLOAD -->
+    <section class="download-section" id="download">
+      <div class="container">
+        
+        <div class="section-header scroll-reveal">
+          <div class="cozy-pill-tag">
+            <span>💾 Get Started</span>
+          </div>
+          <h2 class="section-title">Ready to take control of your time?</h2>
+          <p class="section-subtitle">Download Ocuupied for your desktop. Fast, lightweight, and completely private.</p>
+        </div>
+
+        <!-- Three Platform Cards Side by Side -->
+        <div class="download-grid">
+          
+          <!-- Platform 1: Windows (ACTIVE) -->
+          <div class="platform-card platform-active tilt-left-small scroll-reveal" style="--stagger-delay: 0ms;">
+            <div class="card-header-badge">
+              <span class="active-badge">Recommended</span>
+            </div>
+            
+            <div class="platform-icon-wrap icon-windows">
+              <!-- Windows SVG Icon -->
+              <svg viewBox="0 0 88 88" width="48" height="48" fill="currentColor">
+                <path d="M0 12.48l35.68-4.86v33.45H0V12.48zm0 32.96h35.68v33.45L0 74.03V45.44zm39.84-33.86L88 5.6v35.47H39.84V11.58zm48.16 33.86V80.9l-48.16-6.85V45.44H88z"/>
+              </svg>
+            </div>
+
+            <h3 class="platform-name">Windows</h3>
+            <p class="platform-spec">Windows 10 / 11 (64-bit)</p>
+            
+            <div class="file-info-badge">
+              <span>File size: ~64.2 MB (.exe)</span>
+            </div>
+
+            <!-- 
+              IMPORTANT FOR PRODUCTION LAUNCH:
+              The data-download-url and href below currently point to the local test file 'downloads/test.txt' 
+              for development verification. Before launch, swap 'downloads/test.txt' with your real GitHub 
+              Releases executable link (e.g. 'https://github.com/<user>/<repo>/releases/latest/download/LifeAudit-Setup.exe')
+              and remove or update the download attribute accordingly.
+            -->
+            <a 
+              href="downloads/test.txt" 
+              download="test.txt"
+              class="btn btn-primary btn-download-action" 
+              id="windows-download-btn"
+              data-download-url="downloads/test.txt"
+              data-platform="windows"
+              role="button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download for Windows (.exe)</span>
+            </a>
+
+            <p class="platform-subtext">Instant installer • No admin rights required</p>
+          </div>
+
+          <!-- Platform 2: macOS (COMING SOON) -->
+          <div class="platform-card platform-disabled tilt-right-small scroll-reveal" style="--stagger-delay: 150ms;">
+            <div class="card-header-badge">
+              <span class="coming-soon-badge">Coming Soon</span>
+            </div>
+
+            <div class="platform-icon-wrap icon-mac">
+              <!-- Apple SVG Icon -->
+              <svg viewBox="0 0 170 170" width="48" height="48" fill="currentColor">
+                <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.6-7.79-11.7-14.24-5.87-9.22-10.45-19.88-13.73-31.96-3.28-12.08-4.92-23.47-4.92-34.15 0-14.15 3.51-26.04 10.53-35.68 7.02-9.64 16.03-14.54 27.03-14.7 4.9.11 10.37 1.48 16.4 4.13 6.03 2.65 10.02 4.05 11.97 4.2 2.3-.26 6.52-1.74 12.66-4.44 6.14-2.7 11.45-3.95 15.93-3.75 12.39 1.09 22.38 6.09 29.97 15.01-10.99 6.64-16.32 15.65-15.99 27.04.33 9.46 4.13 17.38 11.4 23.76 4.67 4.14 10.03 7.07 16.08 8.78-2.6 7.61-5.74 15.08-9.42 22.42zM119.22 31.84c0-7.39 2.67-14.38 8.01-20.97 5.34-6.59 11.89-10.58 19.65-11.97.11 1.09.16 2.07.16 2.94 0 7.4-2.82 14.53-8.46 21.39-5.64 6.86-12.44 10.87-20.4 12.02-.32-1.09-.48-2.23-.48-3.41z"/>
+              </svg>
+            </div>
+
+            <h3 class="platform-name">macOS</h3>
+            <p class="platform-spec">Apple Silicon & Intel (DMG)</p>
+
+            <div class="file-info-badge badge-dimmed">
+              <span>Status: In Active Testing</span>
+            </div>
+
+            <button class="btn btn-disabled" disabled aria-disabled="true">
+              <span>Mac Build in Progress</span>
+            </button>
+
+            <p class="platform-subtext">Sign up notification coming in v1.1</p>
+          </div>
+
+          <!-- Platform 3: Linux (COMING SOON) -->
+          <div class="platform-card platform-disabled tilt-left-small scroll-reveal" style="--stagger-delay: 300ms;">
+            <div class="card-header-badge">
+              <span class="coming-soon-badge">Coming Soon</span>
+            </div>
+
+            <div class="platform-icon-wrap icon-linux">
+              <!-- Linux Tux SVG Icon -->
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"></path>
+                <path d="M6 10c0 4.97 2.69 9 6 9s6-4.03 6-9"></path>
+                <path d="M8 20c-1.5 0-3 .5-3 2h14c0-1.5-1.5-2-3-2"></path>
+                <circle cx="10" cy="6" r="1" fill="currentColor"></circle>
+                <circle cx="14" cy="6" r="1" fill="currentColor"></circle>
+              </svg>
+            </div>
+
+            <h3 class="platform-name">Linux</h3>
+            <p class="platform-spec">AppImage & .deb (x86_64)</p>
+
+            <div class="file-info-badge badge-dimmed">
+              <span>Status: Packaging & Testing</span>
+            </div>
+
+            <button class="btn btn-disabled" disabled aria-disabled="true">
+              <span>Linux Build in Progress</span>
+            </button>
+
+            <p class="platform-subtext">Compatible with Ubuntu, Fedora & Arch</p>
+          </div>
+
+        </div>
+
+        <!-- Download Trust / Guarantee Banner -->
+        <div class="download-footer-note scroll-reveal">
+          <div class="note-pill">
+            <span class="pill-badge-green">✔ Verified Clean</span>
+            <span class="note-text"><strong>Version 1.0</strong> • Free • No sign-up required • Zero telemetry or trackers</span>
+          </div>
+          <p class="privacy-promise">
+            🔒 <strong>100% Privacy First:</strong> Your time logs and habit audit data are stored exclusively on your local hard drive. Nothing is sent to the cloud.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- SECTION 5: FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <div class="footer-brand-side">
+        <div class="footer-mascot-row">
+          <!-- Small Footer Bear Mascot -->
+          <svg class="footer-bear-svg" viewBox="0 0 100 100" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ocuupied Mascot">
+            <circle cx="50" cy="52" r="36" fill="#B895F4"/>
+            <circle cx="25" cy="25" r="13" fill="#B895F4"/>
+            <circle cx="75" cy="25" r="13" fill="#B895F4"/>
+            <circle cx="25" cy="25" r="6" fill="#FFE7A3"/>
+            <circle cx="75" cy="25" r="6" fill="#FFE7A3"/>
+            <!-- Sunglasses -->
+            <rect x="22" y="42" width="56" height="15" rx="7" fill="#24202A"/>
+            <circle cx="35" cy="49" r="8" fill="#24202A"/>
+            <circle cx="65" cy="49" r="8" fill="#24202A"/>
+            <line x1="28" y1="47" x2="38" y2="47" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
+            <line x1="58" y1="47" x2="68" y2="47" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
+            <!-- Cute Smile -->
+            <path d="M44 68 Q50 74 56 68" stroke="#24202A" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="footer-logo-title">Ocuupied</div>
+            <p class="footer-tagline">Peaceful time-tracking for mindful humans.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Quick Links -->
+      <nav class="footer-nav" aria-label="Footer Links">
+        <div class="footer-links-group">
+          <!-- 
+            PLACEHOLDER NOTICE: 
+            Replace 'https://github.com' with your actual repository URL (e.g. 'https://github.com/<user>/life-audit-app').
+          -->
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link" id="footer-link-github">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <!-- 
+            PLACEHOLDER NOTICE: 
+            Replace 'mailto:hello@example.com' with your actual support email address.
+          -->
+          <a href="mailto:hello@example.com" class="footer-link" id="footer-link-contact">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>Contact & Support</span>
+          </a>
+          <a href="#hero" class="footer-link">Back to Top ↑</a>
+        </div>
+      </nav>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="container">
+        <p class="copyright-line">
+          © <span id="current-year">2026</span> Ocuupied. Handcrafted with care for peaceful habit building.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container for Download Feedback -->
+  <div class="toast-notification" id="toast-message" role="status" aria-live="polite" aria-hidden="true">
+    <span class="toast-icon">🐻🎉</span>
+    <span class="toast-text">Thank you for downloading Ocuupied!</span>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

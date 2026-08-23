@@ -1,0 +1,4 @@
+Life Audit App — Test Download File
+=======================================
+This is a sample test download file to verify that the download flow works end-to-end during development.
+Before production launch, replace 'downloads/test.txt' with the real installer URL (e.g., GitHub Releases .exe).
