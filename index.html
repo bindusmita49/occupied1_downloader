@@ -14,8 +14,16 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
   
-  <!-- Favicon (SVG data URI for cute sunglasses bear) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='52' r='38' fill='%23B895F4'/><circle cx='25' cy='24' r='14' fill='%23B895F4'/><circle cx='75' cy='24' r='14' fill='%23B895F4'/><circle cx='25' cy='24' r='7' fill='%23FFE7A3'/><circle cx='75' cy='24' r='7' fill='%23FFE7A3'/><rect x='20' y='42' width='60' height='16' rx='8' fill='%2324202A'/><circle cx='34' cy='50' r='9' fill='%2324202A'/><circle cx='66' cy='50' r='9' fill='%2324202A'/><path d='M30 48 Q35 44 40 48' stroke='%23FFF' stroke-width='2' fill='none'/><path d='M62 48 Q67 44 72 48' stroke='%23FFF' stroke-width='2' fill='none'/><ellipse cx='50' cy='66' rx='6' ry='4' fill='%2324202A'/><path d='M44 72 Q50 78 56 72' stroke='%2324202A' stroke-width='3' stroke-linecap='round' fill='none'/></svg>">
+  <!-- Favicon (Note: Standard favicons are typically 16x16, 32x32, or 48x48 px; providing a separate smaller version or .ico file is recommended for optimal sharpness across all browser tabs) -->
+  <link rel="icon" type="image/png" href="assets/occupied-logo.png">
+
+  <!-- Open Graph / Social Share Meta Tags -->
+  <meta property="og:title" content="Ocuupied — Cozy Time Tracking & Habit Audit">
+  <meta property="og:description" content="Ocuupied is a cozy, desktop personal time-tracking and habit-audit tool. Track your hours, crush weekly goals, and audit your life peacefully.">
+  <meta property="og:image" content="assets/occupied-logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="assets/occupied-logo.png">
 </head>
 <body>
 
@@ -36,25 +44,9 @@
   <header class="site-header">
     <div class="container nav-container">
       <a href="#" class="brand-logo" aria-label="Ocuupied Home">
-        <!-- Bear Mascot Mini Logo -->
+        <!-- App Logo -->
         <span class="logo-icon-wrap">
-          <svg class="bear-mini-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="54" r="36" fill="#B895F4"/>
-            <circle cx="24" cy="26" r="14" fill="#B895F4"/>
-            <circle cx="76" cy="26" r="14" fill="#B895F4"/>
-            <circle cx="24" cy="26" r="7" fill="#FFE7A3"/>
-            <circle cx="76" cy="26" r="7" fill="#FFE7A3"/>
-            <ellipse cx="50" cy="67" rx="14" ry="10" fill="#F3E2F0"/>
-            <ellipse cx="50" cy="65" rx="5" ry="3.5" fill="#24202A"/>
-            <!-- Sunglasses -->
-            <path d="M16 46 C 24 38, 42 38, 48 46 L 52 46 C 58 38, 76 38, 84 46 C 84 57, 56 60, 49 52 C 44 60, 16 57, 16 46 Z" fill="#24202A"/>
-            <rect x="22" y="44" width="22" height="11" rx="4" fill="#24202A"/>
-            <rect x="56" y="44" width="22" height="11" rx="4" fill="#24202A"/>
-            <line x1="26" y1="46" x2="34" y2="46" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
-            <line x1="60" y1="46" x2="68" y2="46" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
-            <!-- Cute Smile -->
-            <path d="M46 72 Q50 76 54 72" stroke="#24202A" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
+          <img src="assets/occupied-logo.png" alt="Occupied logo" class="brand-logo-img">
         </span>
         <span class="brand-text">Ocuupied</span>
       </a>
@@ -135,76 +127,9 @@
               <span class="sticker-label">92% Life Balance</span>
             </div>
 
-            <!-- Main Bear Hero Mascot Illustration (SVG) -->
-            <div class="hero-bear-illustration" role="img" aria-label="Cute bear wearing sunglasses giving a friendly wave">
-              <svg class="mascot-full-svg" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Gentle Glow Base -->
-                <circle cx="170" cy="180" r="140" fill="#F3E2F0" opacity="0.9"/>
-                
-                <!-- Bear Body -->
-                <ellipse cx="170" cy="285" rx="92" ry="70" fill="#B895F4"/>
-                <ellipse cx="170" cy="275" rx="55" ry="40" fill="#F3E2F0"/>
-                
-                <!-- Cozy Scarf / Collar -->
-                <path d="M125 220 Q170 235 215 220 C220 232 210 242 195 244 L195 268 L170 260 L145 268 L145 244 C130 242 120 232 125 220 Z" fill="#FFE7A3"/>
-                <circle cx="170" cy="242" r="6" fill="#F23BBE"/>
-
-                <!-- Bear Left Hand (Waving) -->
-                <g class="waving-paw">
-                  <path d="M85 245 C65 235 45 195 55 175 C62 162 82 172 88 185 C95 200 98 225 96 240 Z" fill="#B895F4"/>
-                  <!-- Paw Pads -->
-                  <ellipse cx="64" cy="182" rx="7" ry="6" fill="#FFE7A3"/>
-                  <circle cx="56" cy="172" r="2.5" fill="#FFE7A3"/>
-                  <circle cx="64" cy="168" r="2.5" fill="#FFE7A3"/>
-                  <circle cx="73" cy="171" r="2.5" fill="#FFE7A3"/>
-                </g>
-
-                <!-- Bear Right Hand (Resting) -->
-                <path d="M255 245 C275 235 285 210 280 200 C272 190 255 205 248 218 C242 230 242 242 245 250 Z" fill="#B895F4"/>
-
-                <!-- Bear Ears -->
-                <!-- Left Ear -->
-                <circle cx="108" cy="100" r="32" fill="#B895F4"/>
-                <circle cx="108" cy="100" r="18" fill="#FFE7A3"/>
-                <!-- Right Ear -->
-                <circle cx="232" cy="100" r="32" fill="#B895F4"/>
-                <circle cx="232" cy="100" r="18" fill="#FFE7A3"/>
-
-                <!-- Bear Head -->
-                <circle cx="170" cy="155" r="78" fill="#B895F4"/>
-                
-                <!-- Cute Cheeks -->
-                <ellipse cx="118" cy="180" rx="12" ry="8" fill="#F23BBE" opacity="0.35"/>
-                <ellipse cx="222" cy="180" rx="12" ry="8" fill="#F23BBE" opacity="0.35"/>
-
-                <!-- Snout Area -->
-                <ellipse cx="170" cy="178" rx="28" ry="20" fill="#F3E2F0"/>
-                <!-- Nose -->
-                <ellipse cx="170" cy="172" rx="9" ry="6.5" fill="#24202A"/>
-                <!-- Mouth -->
-                <path d="M162 184 Q170 192 178 184" stroke="#24202A" stroke-width="3.5" stroke-linecap="round"/>
-                
-                <!-- Iconic Sunglasses -->
-                <!-- Bridge -->
-                <rect x="156" y="137" width="28" height="8" rx="4" fill="#24202A"/>
-                <!-- Left Lens Frame -->
-                <rect x="106" y="125" width="52" height="34" rx="14" fill="#24202A"/>
-                <path d="M112 133 L144 133 Q150 133 150 142 L144 150 Q138 153 124 153 L116 150 Q110 145 112 133 Z" fill="#3D3547"/>
-                <!-- Glare lines on Left Lens -->
-                <line x1="118" y1="133" x2="136" y2="133" stroke="#FFE7A3" stroke-width="3" stroke-linecap="round"/>
-                <line x1="116" y1="139" x2="124" y2="139" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
-
-                <!-- Right Lens Frame -->
-                <rect x="182" y="125" width="52" height="34" rx="14" fill="#24202A"/>
-                <path d="M188 133 L220 133 Q226 133 226 142 L220 150 Q214 153 200 153 L192 150 Q186 145 188 133 Z" fill="#3D3547"/>
-                <!-- Glare lines on Right Lens -->
-                <line x1="194" y1="133" x2="212" y2="133" stroke="#FFE7A3" stroke-width="3" stroke-linecap="round"/>
-                <line x1="192" y1="139" x2="200" y2="139" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
-
-                <!-- Sunglasses Temple Arms -->
-                <path d="M106 138 C96 135 90 140 88 144" stroke="#24202A" stroke-width="5" stroke-linecap="round"/>
-                <path d="M234 138 C244 135 250 140 252 144" stroke="#24202A" stroke-width="5" stroke-linecap="round"/>
-              </svg>
+            <!-- Main Hero Branding Illustration -->
+            <div class="hero-bear-illustration" role="img" aria-label="Occupied logo">
+              <img src="assets/dora_image.png" alt="Occupied logo" class="hero-mascot-img">
             </div>
             
             <!-- Small speech bubble from bear -->
@@ -367,10 +292,7 @@
                 <span class="control-dot dot-expand"></span>
               </div>
               <div class="window-title-tab">
-                <svg class="tab-bear-icon" viewBox="0 0 100 100" width="16" height="16" fill="none">
-                  <circle cx="50" cy="50" r="35" fill="#B895F4"/>
-                  <rect x="25" y="40" width="50" height="16" rx="6" fill="#24202A"/>
-                </svg>
+                <img src="assets/occupied-logo.png" alt="Occupied logo" class="tab-logo-img">
                 <span>Ocuupied — Today's Overview</span>
               </div>
               <div class="window-actions">
@@ -705,22 +627,8 @@
       
       <div class="footer-brand-side">
         <div class="footer-mascot-row">
-          <!-- Small Footer Bear Mascot -->
-          <svg class="footer-bear-svg" viewBox="0 0 100 100" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ocuupied Mascot">
-            <circle cx="50" cy="52" r="36" fill="#B895F4"/>
-            <circle cx="25" cy="25" r="13" fill="#B895F4"/>
-            <circle cx="75" cy="25" r="13" fill="#B895F4"/>
-            <circle cx="25" cy="25" r="6" fill="#FFE7A3"/>
-            <circle cx="75" cy="25" r="6" fill="#FFE7A3"/>
-            <!-- Sunglasses -->
-            <rect x="22" y="42" width="56" height="15" rx="7" fill="#24202A"/>
-            <circle cx="35" cy="49" r="8" fill="#24202A"/>
-            <circle cx="65" cy="49" r="8" fill="#24202A"/>
-            <line x1="28" y1="47" x2="38" y2="47" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
-            <line x1="58" y1="47" x2="68" y2="47" stroke="#FFE7A3" stroke-width="2" stroke-linecap="round"/>
-            <!-- Cute Smile -->
-            <path d="M44 68 Q50 74 56 68" stroke="#24202A" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
+          <!-- Footer Logo -->
+          <img src="assets/occupied-logo.png" alt="Occupied logo" class="footer-logo-img">
           <div>
             <div class="footer-logo-title">Ocuupied</div>
             <p class="footer-tagline">Peaceful time-tracking for mindful humans.</p>
