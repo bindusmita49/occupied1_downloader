@@ -1,5 +1,5 @@
 /**
- * OCUUPIED — CLIENT SCRIPT
+ * OCCUPIED — CLIENT SCRIPT
  * Vanilla JS: Scroll animations, gentle blob parallax, download handler, interactive preview
  */
 
