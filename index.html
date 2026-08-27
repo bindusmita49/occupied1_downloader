@@ -520,7 +520,6 @@
               <span>File size: ~38.8 MB (.exe)</span>
             </div>
 
-            
             <a 
               href="https://github.com/bindusmita49/occupied-main/releases/download/v1.0/MyApp.exe" 
               download="Myapp.exe"
@@ -669,11 +668,73 @@
     </div>
   </footer>
 
+  <!-- Download Auth Modal / Popup -->
+  <div class="modal-overlay" id="download-auth-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div class="modal-card">
+      <!-- Close button (X) -->
+      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-pill-tag">
+          <span>✨ Quick Step</span>
+        </div>
+        <h3 class="modal-heading" id="modal-heading">One quick step before you download</h3>
+        <p class="modal-subheading">Create your free account to get started with Occupied.</p>
+      </div>
+
+      <form id="modal-auth-form" class="modal-form" novalidate>
+        <div class="modal-input-group">
+          <label for="modal-email" class="modal-label">Email</label>
+          <input 
+            type="email" 
+            id="modal-email" 
+            class="modal-input" 
+            placeholder="your.email@example.com" 
+            required 
+            autocomplete="email" />
+        </div>
+
+        <div class="modal-input-group">
+          <label for="modal-password" class="modal-label">Password</label>
+          <input 
+            type="password" 
+            id="modal-password" 
+            class="modal-input" 
+            placeholder="Create password (min 6 characters)" 
+            required 
+            minlength="6" 
+            autocomplete="new-password" />
+        </div>
+
+        <!-- Inline error/feedback message -->
+        <div id="modal-feedback" class="modal-feedback-box" style="display: none;" role="alert"></div>
+
+        <button type="submit" id="modal-submit-btn" class="btn btn-primary modal-btn-submit">
+          <span id="modal-submit-text">Sign Up & Download</span>
+          <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Toast Notification Container for Download Feedback -->
   <div class="toast-notification" id="toast-message" role="status" aria-live="polite" aria-hidden="true">
     <span class="toast-icon">🐻🎉</span>
     <span class="toast-text">Thank you for downloading Ocuupied!</span>
   </div>
+
+  <!-- Supabase CDN & Configuration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
 
   <!-- JavaScript -->
   <script src="script.js"></script>

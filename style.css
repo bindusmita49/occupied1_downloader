@@ -1194,6 +1194,177 @@ button {
   color: var(--text-muted);
 }
 
+/* --------------------------------------------------------------------------
+   11.1 DOWNLOAD AUTH MODAL (COZY POPUP)
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(36, 32, 42, 0.52);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: #FAF5FA;
+  border-radius: var(--radius-xl);
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 24px 60px rgba(45, 30, 60, 0.24);
+  padding: 34px 28px 28px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  transform: scale(0.92) translateY(16px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.is-active .modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #EFE4EE;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: var(--primary-purple);
+  color: #FFFFFF;
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card-cream-pink);
+  color: var(--text-dark-plum);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(184, 149, 244, 0.3);
+  margin-bottom: 10px;
+}
+
+.modal-heading {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-dark-plum);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.modal-subheading {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+.modal-label {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dark-plum);
+}
+
+.modal-input {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(184, 149, 244, 0.35);
+  background-color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-dark-plum);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-input::placeholder {
+  color: #A499A9;
+  font-size: 0.85rem;
+}
+
+.modal-input:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(184, 149, 244, 0.22);
+}
+
+.modal-feedback-box {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.modal-feedback-error {
+  background-color: #FDF2F4;
+  border: 1px solid #F8B4C2;
+  color: #9E1F3B;
+}
+
+.modal-btn-submit {
+  width: 100%;
+  padding: 13px 20px;
+  font-size: 0.95rem;
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.modal-btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .download-footer-note {
   text-align: center;
   max-width: 620px;
